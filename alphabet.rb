@@ -36,10 +36,10 @@ class Alphabet
 end
 
 
-t = Alphabet.new
+# t = Alphabet.new
 
-p t.given_braille(["0.","..",".."])
+# p t.given_braille(["0.","..",".."])
 
-p t.given_alpha("a")
+# p t.given_alpha("a")
 
 
