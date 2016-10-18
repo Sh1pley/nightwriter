@@ -32,7 +32,13 @@ class Translator
   return line_3
   end
 
-
+  def to_braille(string)
+    braille_array = []
+    braille_array << to_braille_1(string)
+    braille_array << to_braille_2(string)
+    braille_array << to_braille_3(string)
+    return braille_array
+  end
 
 
 end
