@@ -19,17 +19,14 @@ class Alphabet
             "y" => ["00", ".0", "00"], "z" => ["0.", ".0", "00"]}
     end
     
-    def given_alpha(alpha)
-        ##Given a letter return braille value
-        # alpha_result = @letters.invert
-        # result = alpha_result.key(alpha)
-        # p result
-        @letters[alpha]
+    def given_alpha(alpha, index)
+      ##Given a letter return braille value
+      @letters[alpha][index]
     end
 
     def given_braille(braille) # => an array
-        ##Given braille return alpha value
-        @letters.key(braille)
+      ##Given braille return alpha value
+      @letters.key(braille)#[index]
        
     end 
     # binding.pry
