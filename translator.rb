@@ -47,6 +47,13 @@ class Translator
   end
 
   def to_alpha(string)
+    string = ""
     to_print = indexed_braille(string)
+      to_print.each do |item|
+        string << alphabet.to_alpha(item)
+      end
+    return string
+  end
+      
 
 end
