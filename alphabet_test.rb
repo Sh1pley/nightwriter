@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require 'minitest/emoji'
+require 'minitest/pride'
 require_relative 'alphabet'
 
 class AlphabetTest < Minitest::Test
