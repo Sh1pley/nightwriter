@@ -17,3 +17,6 @@ ordered_line = ""
   ordered_line << line_3[index]
   ordered_line << line_3[index+1]
 end
+
+translator = Translator.new
+translator.to_alpha(ordered_line)
