@@ -10,7 +10,7 @@ class TranslatorTest < Minitest::Test
   end
   def test_it_has_an_alphabet_when_created
     ##Need to add attr_reader for alphabet
-    skip
+    # skip
     translator = Translator.new
     assert translator.alphabet
   end

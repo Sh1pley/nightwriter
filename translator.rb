@@ -1,8 +1,11 @@
 require_relative 'alphabet'
 
 class Translator
+
+  attr_reader :alphabet
+
   def initialize
-    alphabet = Alphabet.new
+    @alphabet = Alphabet.new
   end
 
   def to_braille_1(string)
@@ -28,6 +31,8 @@ class Translator
     end
   return line_3
   end
+
+
 
 
 end
