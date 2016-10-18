@@ -40,5 +40,13 @@ class Translator
     return braille_array
   end
 
+  def indexed_braille(string)
+    elements = string.scan(/../)
+    output = elements.each_slice(3).map { |e| e }
+    return output
+  end
+
+  def to_alpha(string)
+    to_print = indexed_braille(string)
 
 end
