@@ -21,7 +21,7 @@ class Translator
   return line_2
   end
 
-  def to_braille_1(string)
+  def to_braille_3(string)
     line_3 = ""
     string.each_char do|character|
       line_3 << alphabet.given_alpha(character,2)  

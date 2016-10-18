@@ -15,32 +15,40 @@ class TranslatorTest < Minitest::Test
     assert translator.alphabet
   end
 
-  def test_it_can_convert_a_single_alpha_to_braille
+  def test_it_can_return_line1_given_1_character
     translator = Translator.new
-    braille = ["0.", "00", ".."]
-    assert_equal braille, translator.to_braille("h")
+    braille = "0."
+    assert_equal braille, translator.to_braille_1("h")
   end
 
-  def test_it_can_convert_two_alphas_to_braille
+  def test_it_can_return_line2_given_1_character
     translator = Translator.new
-    braille = [["0.", "00", ".."], ["0.", ".0", ".."]]
-    assert_equal braille, translator.to_braille("he")
+    braille = "00"
+    assert_equal braille, translator.to_braille_2("h")
   end
 
-  def test_it_can_convert_single_braille_to_alpha
-    ##Still need to_alpha_method
-    skip
+  def test_it_can_return_line3_given_1_character
     translator = Translator.new
-    alpha = "h"
-    assert_equal alpha, translator.to_alpha(["0.", "00", ".."])
+    braille = ".."
+    assert_equal braille, translator.to_braille_3("h")
   end
 
-  def test_it_can_convert_two_brailles_to_alpha
-    ##Still need to_alpha_method
-    skip
+  def test_it_can_return_line1_given_2_characters
     translator = Translator.new
-    alpha = "he"
-    assert_equal alpha, translator.to_alpha([["0.", "00", ".."], ["0.", ".0", ".."]])
+    braille = "0.0."
+    assert_equal braille, translator.to_braille_1("he")
+  end
+
+  def test_it_can_return_line2_given_2_characters
+    translator = Translator.new
+    braille = "00.0"
+    assert_equal braille, translator.to_braille_2("he")
+  end
+
+  def test_it_can_return_line3_given_2_characters
+    translator = Translator.new
+    braille = "...."
+    assert_equal braille, translator.to_braille_3("he")
   end
 
 end
