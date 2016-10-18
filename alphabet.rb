@@ -1,5 +1,3 @@
-require 'pry'
-
 class Alphabet
 
     def initialize
@@ -21,23 +19,17 @@ class Alphabet
     end
     
     def given_alpha(alpha, index)
-      ##Given a letter return braille value
       @letters[alpha][index]
     end
 
-    def given_braille(braille) # => an array
-      ##Given braille return alpha value
-      @letters.key(braille)#[index]
+    def given_braille(braille)
+      @letters.key(braille)
        
     end 
-    # binding.pry
 end
 
 
-# t = Alphabet.new
 
-# p t.given_braille(["0.","..",".."])
 
-# p t.given_alpha("a")
 
 
