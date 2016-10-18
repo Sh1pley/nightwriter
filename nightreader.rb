@@ -17,3 +17,9 @@ ordered_line = ""
   ordered_line << line_3[index]
   ordered_line << line_3[index+1]
 end
+
+output_file = open(second, 'w')
+translator = Translator.new
+output_text = translator.to_alpha(ordered_line)
+output_file.write(output_text)
+
