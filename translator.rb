@@ -43,16 +43,16 @@ class Translator
   def indexed_braille(string)
     elements = string.scan(/../)
     output = elements.each_slice(3).map { |e| e }
-    return output
+    output
   end
 
   def to_alpha(string)
-    string = ""
+    final_string = ""
     to_print = indexed_braille(string)
       to_print.each do |item|
-        string << alphabet.to_alpha(item)
+        final_string << alphabet.given_braille(item)
       end
-    return string
+    return final_string
   end
       
 

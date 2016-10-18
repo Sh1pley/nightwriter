@@ -50,14 +50,14 @@ class TranslatorTest < Minitest::Test
   end
 
   def test_it_can_return_alpha_given_string_with_1_braille
-    skip
+    # skip
     translator = Translator.new
     alpha = "a"
     assert_equal alpha, translator.to_alpha("0.....")
   end
 
   def test_it_can_return_alpha_given_string_with_2_brailles
-    skip
+    # skip
     translator = Translator.new
     alpha = "an"
     assert_equal alpha, translator.to_alpha("0.....00.00.")
