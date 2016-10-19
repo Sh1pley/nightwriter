@@ -9,64 +9,41 @@ class Translator
     @alphabet = Alphabet.new
   end
 
-  def to_braille_1(string)
-    line_1 = ""
+
+  def to_braille_line(string, index)
+    line = ""
     string.each_char do|character|
-      if character == character.upcase
-        line_1 << alphabet.given_alpha("^", 0)
-        character.downcase!
-      end
-      line_1 << alphabet.given_alpha(character,0)  
+      check_upcase(character, line_1, index)
+      line << alphabet.given_alpha(character, index)  
     end
-  return line_1
+     line
   end
 
-  def to_braille_2(string)
-    line_2 = ""
-    string.each_char do|character|
+  def check_upcase(character, line, index)
       if character == character.upcase
-        line_1 << alphabet.given_alpha("^", 1)
+        line << alphabet.given_alpha("^", index)
         character.downcase!
       end
-      line_2 << alphabet.given_alpha(character,1)  
-    end
-  return line_2
-  end
-
-  def to_braille_3(string)
-    line_3 = ""
-    string.each_char do|character|
-      if character == character.upcase
-        line_1 << alphabet.given_alpha("^", 2)
-        character.downcase!
-      end
-      line_3 << alphabet.given_alpha(character,2)  
-    end
-  return line_3
   end
 
   def to_braille(string)
     braille_array = []
-    braille_array << to_braille_1(string)
-    braille_array << to_braille_2(string)
-    braille_array << to_braille_3(string)
-    return braille_array
+    braille_array << to_braille_line(string, 0)
+    braille_array << to_braille_line(string, 1)
+    braille_array << to_braille_line(string, 2)
+    braille_array
   end
 
   def indexed_braille(string)
-    elements = string.scan(/../)
-    output = elements.each_slice(3).map { |e| e }
-    output
+    # elements = 
+    string.scan(/../).each_slice(3).map { |e| e }
   end
 
   def to_alpha(string)
     final_string = ""
-    to_print = indexed_braille(string)
-      to_print.each do |item|
+      indexed_braille(string).each do |item|
         final_string << alphabet.given_braille(item)
       end
-    return final_string
+    final_string
   end
-      
-
 end
