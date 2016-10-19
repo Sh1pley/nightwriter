@@ -1,8 +1,6 @@
 
 class Alphabet
 
-    attr_reader :shift
-
     def initialize
         @shift = false
         @letters = {  
