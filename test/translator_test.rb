@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative 'translator'
+require './lib/translator'
 
 class TranslatorTest < Minitest::Test
 

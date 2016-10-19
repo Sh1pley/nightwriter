@@ -1,8 +1,8 @@
-require_relative 'translator'
+require './lib/translator'
 
 first, second = ARGV
 
-input_file = open(first)
+input_file = File.open(first)
 line_1 = input_file.readline.chomp
 line_2 = input_file.readline.chomp
 line_3 = input_file.readline.chomp
@@ -22,4 +22,5 @@ output_file = open(second, 'w')
 translator = Translator.new
 output_text = translator.to_alpha(ordered_line)
 output_file.write(output_text)
+output_file.close
 

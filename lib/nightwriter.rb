@@ -1,8 +1,8 @@
-require_relative 'translator'
+require './lib/translator'
 
 first, second = ARGV
 
-input_file = open(first)
+input_file = File.open(first)
 string = input_file.readline
 
 translator = Translator.new
@@ -19,3 +19,4 @@ output_file.write(line_2)
 output_file.write("\n")
 output_file.write(line_3)
 output_file.write("\n")
+output_file.close

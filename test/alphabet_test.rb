@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative 'alphabet'
+require './lib/alphabet'
 
 class AlphabetTest < Minitest::Test
 
