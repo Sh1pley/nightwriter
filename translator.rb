@@ -33,6 +33,9 @@ class Translator
   return line_2
   end
 
+  def ilana 
+  end
+
   def to_braille_3(string)
     line_3 = ""
     string.each_char do|character|
