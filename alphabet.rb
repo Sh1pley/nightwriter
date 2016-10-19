@@ -1,8 +1,10 @@
-require 'pry'
 
 class Alphabet
 
+    attr_reader :shift
+
     def initialize
+        @shift = false
         @letters = {  
             "a" => ["0.", "..", ".."], "b" => ["0.", "0.", ".."],
             "c" => ["00", "..", ".."], "d" => ["00", ".0", ".."],
@@ -17,27 +19,46 @@ class Alphabet
             "u" => ["0.", "..", "00"], "v" => ["0.", "0.", "00"],
             "w" => [".0", "00", ".0"], "x" => ["00", "..", "00"],
             "y" => ["00", ".0", "00"], "z" => ["0.", ".0", "00"],
-            " " => ["..","..",".."] }
+            #special characters
+            " " => ["..", "..", ".."], 
+            "!" => ["..", "00", "0."], 
+            "'" => ["..", "..", "0."], 
+            "," => ["..", "0.", ".."], 
+            "-" => ["..", "..", "00"], 
+            "." => ["..", "00", ".0"], 
+            "?" => ["..", "0.", "00"],
+            "#" => [".0", ".0", "00"],   
+            "^" => ["..", "..", ".0"]
+
+            }
+          
+        @numbers = {
+            "0" => [".0", "00", ".."], "1" => ["0.", "..", ".."],
+            "2" => ["0.", "0.", ".."], "3" => ["00", "..", ".."],
+            "4" => ["00", ".0", ".."], "5" => ["0.", ".0", ".."],
+            "6" => ["00", "0.", ".."], "7" => ["00", "00", ".."],
+            "8" => ["0.", "00", ".."], "9" => [".0", "0.", ".."]
+            }
     end
     
     def given_alpha(alpha, index)
-      ##Given a letter return braille value
-      @letters[alpha][index]
+      if @letters.include?(alpha)
+        @letters[alpha][index]
+      elsif @numbers.include?(alpha)
+        @numbers[alpha][index]
+      end
     end
 
-    def given_braille(braille) # => an array
-      ##Given braille return alpha value
-      @letters.key(braille)#[index]
-       
-    end 
-    # binding.pry
+    def given_braille_number(braille)
+      @numbers.key(braille)
+    end
+
+    def given_braille(braille)
+      @letters.key(braille)
+    end
+    
+
 end
 
-
-# t = Alphabet.new
-
-# p t.given_braille(["0.","..",".."])
-
-# p t.given_alpha("a")
 
 

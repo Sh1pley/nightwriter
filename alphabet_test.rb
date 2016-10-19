@@ -43,4 +43,34 @@ class AlphabetTest < Minitest::Test
     assert_equal alpha, alphabet.given_braille(["0.", "..", ".."])
   end  
 
+  def test_it_can_locate_capital
+    result = Alphabet.new
+    assert_equal "^", result.given_braille(["..","..",".0"])
+  end
+
+  def test_it_can_write_capital_in_braille
+    result = Alphabet.new
+    assert_equal ["..","..",".0"], result.given_alpha("^", 0..2)
+  end
+
+  def test_it_can_write_numbers_in_braille
+    result = Alphabet.new
+    assert_equal ["00", ".0", ".."], result.given_alpha("4", 0..2)
+  end
+
+  def test_it_can_read_numbers_in_braille
+    result = Alphabet.new
+    assert_equal "7", result.given_braille_number(["00", "00", ".."])
+  end
+
+  def test_it_can_refute_wrong_inputs
+    result = Alphabet.new
+    refute result.given_alpha("&", 5)
+  end
+
+  # def test_it_can_write_letter_and_number
+  #   result = Alphabet.new
+  #   assert_equal ["0.", "..", ".."], result.given_alpha("a", 0..2)
+  #   # assert_equal []
+  # end
 end
