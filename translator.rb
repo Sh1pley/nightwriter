@@ -14,14 +14,14 @@ class Translator
     line = ""
     string.each_char do|character|
       check_upcase(character, line, index)
-      line << alphabet.given_alpha(character, index)  
+      line << alphabet.given_alpha_letter(character, index)  
     end
     line
   end
 
   def check_upcase(character, line, index)
     if character == character.upcase
-      line << alphabet.given_alpha("^", index)
+      line << alphabet.given_alpha_letter("^", index)
       character.downcase!
     end
   end
@@ -41,7 +41,7 @@ class Translator
   def to_alpha(string)
     final_string = ""
     indexed_braille(string).each do |item|
-      final_string << alphabet.given_braille(item)
+      final_string << alphabet.given_braille_letter(item)
     end
     final_string
   end

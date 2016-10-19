@@ -21,14 +21,22 @@ class TranslatorTest < Minitest::Test
 
   def test_it_can_return_line2_given_1_alpha
     translator = Translator.new
-    braille = "00.0"
-    assert_equal braille, translator.to_braille_line("he", 1)
+    braille = "00"
+    assert_equal braille, translator.to_braille_line("h", 1)
   end
 
   def test_it_can_return_line3_given_1_alpha
     translator = Translator.new
-    braille = ".0...."
-    assert_equal braille, translator.to_braille_line("He", 2)
+    braille = ".."
+    assert_equal braille, translator.to_braille_line("h", 2)
+  end
+
+  def test_it_can_determine_upcase_and_downcase_it
+    translator = Translator.new
+    character = "A"
+    line = ""
+    index = 0
+    assert_equal "a", translator.check_upcase(character, line, index)
   end
 
   def test_it_can_convert_string_with_one_braille_to_nested_array
