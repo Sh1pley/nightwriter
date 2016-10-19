@@ -49,6 +49,18 @@ class TranslatorTest < Minitest::Test
     assert_equal braille, translator.to_braille_3("he")
   end
 
+  def test_it_can_return_line_1_given_1_capital
+    translator = Translator.new
+    braille = "..0."
+    assert_equal braille, translator.to_braille_1("H")
+  end
+
+  def test_it_can_return_line_1_given_capital_and_lower
+    translator = Translator.new
+    braille = "..0.0."
+    assert_equal braille, translator.to_braille_1("He")
+  end
+
   def test_it_can_convert_string_with_one_braille_to_nested_array
     translator = Translator.new
     string = "0....."
