@@ -63,7 +63,14 @@ class TranslatorTest < Minitest::Test
     assert_equal alpha, translator.to_alpha("0.....00.00.")
   end
 
-  def test_it_can_make_letter_upcase_instead_of_^
+  def test_it_can_convert_letters_to_upcase
+    result = Translator.new
+    assert_equal "A", result.to_upcase("^a")
+  end
+
+  def test_to_alpha_works_with_to_upcase
+    result = Translator.new
+    assert_equal "B", result.to_alpha(".....00.0...")
   end
   
 end

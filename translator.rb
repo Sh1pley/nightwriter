@@ -43,6 +43,17 @@ class Translator
     indexed_braille(string).each do |item|
       final_string << alphabet.given_braille_letter(item)
     end
-    final_string
+    to_upcase(final_string)
+  end
+
+  def to_upcase(string)
+    string = string.scan(/./)
+    string.each_with_index do |element, index|
+      if element == "^"
+        string[index +1].upcase!
+      end
+    end  
+    string.delete("^")
+    string.join("")
   end
 end
