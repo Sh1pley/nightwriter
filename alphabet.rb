@@ -41,26 +41,25 @@ class Alphabet
         }
   end
     
-  def given_alpha(alpha, index)
+  def given_alpha_letter(alpha, index)
     if @letters.include?(alpha)
       @letters[alpha][index]
-    elsif @numbers.include?(alpha)
-      @numbers[alpha][index]
     end
   end
 
-  # def check_for_char_shift(braille)
-  #   if @letters.key(braille).include?("^")
-  #     @shift = 
+  def given_alpha_number(number, index)
+    if @numbers.include?(number)
+      @numbers[number][index]
+    end
+  end
+
+  def given_braille_letter(braille)
+    @letters.key(braille)
+  end
 
   def given_braille_number(braille)
     @numbers.key(braille)
   end
-
-  def given_braille(braille)
-    @letters.key(braille)
-  end
-
 end
 
 
