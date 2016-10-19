@@ -16,3 +16,5 @@ braille = translator.to_braille(string)
 end
 
 output_file.close
+
+p "Created '#{ARGV[1]}' from '#{ARGV[0]}'! -----> Contains #{output_text.length} characters.'"
