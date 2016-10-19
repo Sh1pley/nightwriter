@@ -11,7 +11,7 @@ translator = Translator.new
 braille = translator.to_braille(string)
 
 3.times do |i|
-  output_file.write(braille[0])
+  output_file.write(braille[i])
   output_file.write("\n")
 end
 
