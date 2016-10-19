@@ -62,4 +62,8 @@ class TranslatorTest < Minitest::Test
     alpha = "an"
     assert_equal alpha, translator.to_alpha("0.....00.00.")
   end
+
+  def test_it_can_make_letter_upcase_instead_of_^
+  end
+  
 end
