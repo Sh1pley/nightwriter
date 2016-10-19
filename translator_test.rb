@@ -49,12 +49,6 @@ class TranslatorTest < Minitest::Test
     assert_equal braille, translator.to_braille_3("he")
   end
 
-  def test_it_can_return_alpha_given_string_with_1_braille
-    translator = Translator.new
-    alpha = "a"
-    assert_equal alpha, translator.to_alpha("0.....")
-  end
-
   def test_it_can_convert_string_with_one_braille_to_nested_array
     translator = Translator.new
     string = "0....."
@@ -67,7 +61,7 @@ class TranslatorTest < Minitest::Test
     assert_equal [["0.", "..", ".."],["00", ".0", "0."]], translator.indexed_braille(string)
   end
 
-  def test_it_can_return_alpha_given_string_with_2_brailles
+  def test_it_can_return_alpha_given_string_with_1_braille
     translator = Translator.new
     alpha = "a"
     assert_equal alpha, translator.to_alpha("0.....")
