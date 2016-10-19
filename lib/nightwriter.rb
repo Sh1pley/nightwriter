@@ -3,20 +3,16 @@ require './lib/translator'
 first, second = ARGV
 
 input_file = File.open(first)
+output_file = File.open(second, 'w')
+
 string = input_file.readline
 
 translator = Translator.new
-braille_array = translator.to_braille(string)
+braille = translator.to_braille(string)
 
-output_file = open(second, 'w')
-line_1 = braille_array[0]
-line_2 = braille_array[1]
-line_3 = braille_array[2]
+3.times do |i|
+  output_file.write(braille[i])
+  output_file.write("\n")
+end
 
-output_file.write(line_1)
-output_file.write("\n")
-output_file.write(line_2)
-output_file.write("\n")
-output_file.write(line_3)
-output_file.write("\n")
 output_file.close
