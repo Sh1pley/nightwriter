@@ -1,4 +1,5 @@
 require_relative 'alphabet'
+require 'pry'
 
 class Translator
 
@@ -11,6 +12,10 @@ class Translator
   def to_braille_1(string)
     line_1 = ""
     string.each_char do|character|
+      if character == character.upcase
+        line_1 << alphabet.given_alpha("^", 0)
+        character.downcase!
+      end
       line_1 << alphabet.given_alpha(character,0)  
     end
   return line_1
@@ -19,6 +24,10 @@ class Translator
   def to_braille_2(string)
     line_2 = ""
     string.each_char do|character|
+      if character == character.upcase
+        line_1 << alphabet.given_alpha("^", 1)
+        character.downcase!
+      end
       line_2 << alphabet.given_alpha(character,1)  
     end
   return line_2
@@ -27,6 +36,10 @@ class Translator
   def to_braille_3(string)
     line_3 = ""
     string.each_char do|character|
+      if character == character.upcase
+        line_1 << alphabet.given_alpha("^", 2)
+        character.downcase!
+      end
       line_3 << alphabet.given_alpha(character,2)  
     end
   return line_3
