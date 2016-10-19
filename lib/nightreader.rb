@@ -24,3 +24,5 @@ output_text = translator.to_alpha(ordered_line)
 output_file.write(output_text)
 output_file.close
 
+p "Created '#{ARGV[1]}' from '#{ARGV[0]}'! -----> Contains #{output_text.length} characters.'"
+
