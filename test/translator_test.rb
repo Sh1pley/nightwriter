@@ -13,7 +13,7 @@ class TranslatorTest < Minitest::Test
     assert translator.alphabet
   end
 
-  def test_it_can_return_line_given_1_alpha
+  def test_it_can_return_line1_given_1_alpha
     translator = Translator.new
     braille = "0."
     assert_equal braille, translator.to_braille_line("h", 0)
@@ -31,12 +31,59 @@ class TranslatorTest < Minitest::Test
     assert_equal braille, translator.to_braille_line("h", 2)
   end
 
+  def test_it_can_return_line_given_2_alphas
+    translator = Translator.new
+    braille = "0.00"
+    assert_equal braille, translator.to_braille_line("an", 0)
+  end
+
   def test_it_can_determine_upcase_and_downcase_it
     translator = Translator.new
-    character = "A"
     line = ""
-    index = 0
-    assert_equal "a", translator.check_upcase(character, line, index)
+    assert_equal "a", translator.check_upcase("A", line, 0)
+  end
+
+  def test_check_upcase_wont_add_space_to_special_characters
+    translator = Translator.new
+    line = ""
+    translator.check_upcase("!", line, 0)
+    assert_equal "", line
+  end
+
+  def test_it_can_return_line_given_a_capital_letter
+    translator = Translator.new
+    braille = "..0."
+    assert_equal braille, translator.to_braille_line("A", 0)
+  end
+
+  def test_it_can_return_line_given_a_capital_and_lowercase
+    translator = Translator.new
+    braille = "..0.0."
+    assert_equal braille, translator.to_braille_line("Aa", 0)
+  end
+
+  def test_to_braille_line_works_given_1_number
+    translator = Translator.new
+    braille = ".00."
+    assert_equal braille, translator.to_braille_line("#1", 0)
+  end
+
+  def test_to_braille_line_works_given_2_numbers
+    translator = Translator.new
+    braille = ".00.00"
+    assert_equal braille, translator.to_braille_line("#13", 0)
+  end
+
+  def test_to_braille_works_with_capitals
+    translator = Translator.new
+    braille = ["..0.0.", "..0.0.", ".0...."]
+    assert_equal braille, translator.to_braille("Bb")
+  end
+
+  def test_to_braiile_works_with_numbers
+    translator = Translator.new
+    braille = [".00.0.", ".0..0.", "00...."]
+    assert_equal braille, translator.to_braille("#12")
   end
 
   def test_it_can_convert_string_with_one_braille_to_nested_array
@@ -72,5 +119,5 @@ class TranslatorTest < Minitest::Test
     result = Translator.new
     assert_equal "B", result.to_alpha(".....00.0...")
   end
-  
+
 end

@@ -1,5 +1,4 @@
 require_relative 'alphabet'
-require 'pry'
 
 class Translator
 
@@ -12,15 +11,26 @@ class Translator
 
   def to_braille_line(string, index)
     line = ""
+    numbers = false
     string.each_char do|character|
-      check_upcase(character, line, index)
-      line << alphabet.given_alpha_letter(character, index)  
+      if character == " "
+        numbers = false
+      end
+      if numbers
+        line << alphabet.given_alpha_number(character, index)
+      else
+        check_upcase(character, line, index)
+        line << alphabet.given_alpha_letter(character, index)  
+      end
+      if character == "#"
+        numbers = true
+      end
     end
     line
   end
 
   def check_upcase(character, line, index)
-    if character == character.upcase
+    if character.match(/^[[:alpha:]]$/) && character == character.upcase
       line << alphabet.given_alpha_letter("^", index)
       character.downcase!
     end
